@@ -47,3 +47,9 @@ def getNotes(request):
     #cant directly return notes as they are objects not json data
     serializer = NoteSerializer(notes,many = True)
     return(Response(serializer.data))
+
+@api_view(['GET'])
+def getNote(request, primaryKey):
+    note = Note.objects.get(id=primaryKey)
+    serialzier = NoteSerializer(note, many=False)
+    return(Response(serialzier.data))
