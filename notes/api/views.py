@@ -78,3 +78,11 @@ def deleteNote(request,primaryKey):
     note = Note.objects.get(id=primaryKey)
     note.delete()
     return(Response("NOTE was deleted!!!!"))
+
+@api_view(['GET'])
+def getNotesList(request,start,end):
+    notes = Note.objects.all()
+    print(notes)
+    notes = notes[int(start)-1:int(end)]
+    serializer = NoteSerializer(notes,many=True)
+    return(Response(serializer.data))

@@ -8,4 +8,6 @@ urlpatterns = [
     path('notes/create/',views.createNote),
     path('notes/<str:primaryKey>/update/',views.updateNote),
     path('notes/<str:primaryKey>/delete/',views.deleteNote),
+
+    path('notes/pagination/<str:start>/<str:end>',views.getNotesList)
 ]
