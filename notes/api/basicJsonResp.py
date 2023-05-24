@@ -1,9 +1,5 @@
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from .serializers import NoteSerializer
-from .models import Note
+from django.http import JsonResponse
 
-@api_view(['GET'])
 def getRoutes(request):
     routes = [
         {
@@ -38,12 +34,4 @@ def getRoutes(request):
         },
         
     ]
-    
-    return(Response(routes))
-
-@api_view(['GET'])
-def getNotes(request):
-    notes = Note.objects.all()
-    #cant directly return notes as they are objects not json data
-    serializer = NoteSerializer(notes,many = True)
-    return(Response(serializer.data))
+    return JsonResponse(routes, safe = False)
