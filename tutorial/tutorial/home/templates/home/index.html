@@ -1,0 +1,19 @@
+{% extends "home/base.html" %}
+{% block start %}
+    
+    <table style="width:100%">
+        <tr>
+          <th>Sno</th>
+          <th>Name</th> 
+          <th>Age</th>
+        </tr>
+        {% for people in people %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{people.name}}</td>
+          <td>{{people.age}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      
+{%endblock%}
