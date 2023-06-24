@@ -1,5 +1,5 @@
 """
-ASGI config for receipe_book project.
+ASGI config for recipe_book project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
