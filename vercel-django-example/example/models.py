@@ -1,12 +1,12 @@
 from django.db import models
 
+class Document(models.Model):
+    heading = models.CharField(max_length=150)
+    sub_heading = models.TextField(blank=True)
+    content = models.TextField()
+
 class Image(models.Model):
-    def nameFile(instance, filename):
-     return '/'.join(['images', str(instance.name), filename])
-    # folder_name = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    file = models.ImageField(upload_to=nameFile)
+    parent = models.ForeignKey(Document, on_delete=models.CASCADE, related_name='children')
+    image = models.ImageField(upload_to='child_images/')
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.name
